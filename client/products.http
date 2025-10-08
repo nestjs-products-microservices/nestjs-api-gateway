@@ -1,0 +1,42 @@
+@productId = 10
+
+# @name getProducts
+GET {{baseUrl}}/products
+    ?page=5
+    &limit=10
+Content-Type: application/json
+
+###
+
+
+# @name getProduct
+GET {{baseUrl}}/products/{{productId}}
+Content-Type: application/json
+
+###
+
+# @name createProduct
+POST {{baseUrl}}/products
+Content-Type: application/json
+
+{
+    "name": "Mouse",
+    "price": 10
+}
+
+###
+
+# @name updateProduct
+PATCH {{baseUrl}}/products/{{productId}}
+Content-Type: application/json
+
+{
+    "name": "New Teclado 2",
+    "price": 999.99
+}
+
+###
+
+# @name deleteProduct
+DELETE {{baseUrl}}/products/{{productId}}
+Content-Type: application/json
