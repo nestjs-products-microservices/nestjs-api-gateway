@@ -1,12 +1,19 @@
-import { ArgumentsHost, ExceptionFilter, HttpStatus } from '@nestjs/common';
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+import { Catch, ArgumentsHost, ExceptionFilter } from '@nestjs/common';
+
 import { RpcException } from '@nestjs/microservices';
 
+@Catch(RpcException)
 export class RpcCustomExceptionFilter implements ExceptionFilter {
   catch(exception: RpcException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const response = ctx.getResponse();
+
     const rpcError = exception.getError();
+
     if (
       typeof rpcError === 'object' &&
       'status' in rpcError &&
@@ -15,13 +22,12 @@ export class RpcCustomExceptionFilter implements ExceptionFilter {
       const status = isNaN(+(rpcError.status as any))
         ? 400
         : +(rpcError.status as any);
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
       return response.status(status).json(rpcError);
     }
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access
-    response.status(HttpStatus.BAD_REQUEST).json({
-      status: HttpStatus.BAD_REQUEST,
-      message: rpcError as string,
+
+    response.status(400).json({
+      status: 400,
+      message: rpcError,
     });
   }
 }

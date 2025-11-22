@@ -8,5 +8,9 @@ export const envs = {
       host: get('PRODUCTS_MICROSERVICE_HOST').required().asString(),
       port: get('PRODUCTS_MICROSERVICE_PORT').required().asPortNumber(),
     },
+    orders: {
+      host: get('ORDERS_MICROSERVICE_HOST').required().asString(),
+      port: get('ORDERS_MICROSERVICE_PORT').required().asPortNumber(),
+    },
   },
 };

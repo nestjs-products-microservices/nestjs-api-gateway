@@ -1,0 +1,44 @@
+@baseUrl= http://localhost:3000/api
+@orderId = 12c96711-2b59-43a3-9990-3be4db918c65
+@status = PENDING
+@newStatus = DELIVERED
+
+# @name getOrders
+GET {{baseUrl}}/orders
+    ?page=1
+    &limit=10
+    &status=DELIVERED
+Content-Type: application/json
+
+###
+
+# @name getOrder
+GET {{baseUrl}}/orders/id/{{orderId}}
+Content-Type: application/json
+
+###
+
+# @name getOrdersByStatus
+GET {{baseUrl}}/orders/{{status}}
+Content-Type: application/json
+
+###
+
+# @name createOrder
+POST {{baseUrl}}/orders
+Content-Type: application/json
+
+{
+    "totalAmount": 9999,
+    "totalItems": 1
+}
+
+###
+
+# @name updateOrderStatus
+PATCH {{baseUrl}}/orders/{{orderId}}
+Content-Type: application/json
+
+{
+    "status": "{{newStatus}}"
+}
