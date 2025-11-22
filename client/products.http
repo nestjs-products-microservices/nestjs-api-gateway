@@ -1,9 +1,9 @@
 @baseUrl= http://localhost:3000/api
-@productId = 10
+@productId = 8
 
 # @name getProducts
 GET {{baseUrl}}/products
-    ?page=5
+    ?page=1
     &limit=10
 Content-Type: application/json
 

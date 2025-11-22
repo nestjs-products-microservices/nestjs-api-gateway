@@ -1,5 +1,5 @@
 @baseUrl= http://localhost:3000/api
-@orderId = 12c96711-2b59-43a3-9990-3be4db918c65
+@orderId = 5f03855f-66f7-46da-b800-a3d2f8bc7b18
 @status = PENDING
 @newStatus = DELIVERED
 
@@ -7,7 +7,7 @@
 GET {{baseUrl}}/orders
     ?page=1
     &limit=10
-    &status=DELIVERED
+    # &status=DELIVERED
 Content-Type: application/json
 
 ###
@@ -29,8 +29,18 @@ POST {{baseUrl}}/orders
 Content-Type: application/json
 
 {
-    "totalAmount": 9999,
-    "totalItems": 1
+    "items": [
+        {
+            "productId": 5,
+            "price": 100,
+            "quantity": 8
+        },
+        {
+            "productId": 8,
+            "price": 100,
+            "quantity": 2
+        }
+    ]
 }
 
 ###
