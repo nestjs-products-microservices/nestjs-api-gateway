@@ -19,4 +19,5 @@ async function bootstrap() {
   await app.listen(envs.port);
   logger.log(`Gateway running on port ${envs.port}`);
 }
+// eslint-disable-next-line @typescript-eslint/no-floating-promises
 bootstrap();
