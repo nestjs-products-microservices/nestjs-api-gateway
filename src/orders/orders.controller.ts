@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
 import {
   Controller,
   Get,
@@ -26,19 +28,24 @@ export class OrdersController {
   }
 
   @Get()
-  findAll(@Query() orderPaginationDto: OrderPaginationDto) {
-    return this.client.send('findAllOrders', orderPaginationDto);
+  async findAll(@Query() orderPaginationDto: OrderPaginationDto) {
+    try {
+      const orders = await firstValueFrom(
+        this.client.send('findAllOrders', orderPaginationDto),
+      );
+      return orders;
+    } catch (error) {
+      throw new RpcException(error as string);
+    }
   }
 
   @Get('id/:id')
   async findOne(@Param('id', ParseUUIDPipe) id: string) {
     try {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       const order = await firstValueFrom(
         this.client.send('findOneOrder', { id }),
       );
 
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       return order;
     } catch (error) {
       throw new RpcException(error as string);
