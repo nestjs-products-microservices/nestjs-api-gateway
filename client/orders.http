@@ -31,14 +31,14 @@ Content-Type: application/json
 {
     "items": [
         {
-            "productId": 5,
-            "price": 100,
-            "quantity": 8
+            "productId": 4,
+            "price": 0,
+            "quantity": 1
         },
         {
-            "productId": 8,
-            "price": 100,
-            "quantity": 2
+            "productId": 5,
+            "price": 0,
+            "quantity": 1
         }
     ]
 }
