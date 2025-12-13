@@ -1,0 +1,29 @@
+@baseUrl= http://localhost:3000/api
+@accessToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5M2QwZjIyZTdkYzJmMDU5YmFmMzZmOCIsImVtYWlsIjoibGVvbmFyZG9AZXhhbXBsZS5jb20iLCJuYW1lIjoiTGVvIFZhbGVyaWFubyIsImlhdCI6MTc2NTYwOTI2MSwiZXhwIjoxNzY1NjE2NDYxfQ.53Bi1ekEUqnTzftGimZTwBEE7kVK4R0fyjU1N22bef0
+
+# @name register
+POST {{baseUrl}}/auth/register
+Content-Type: application/json
+
+{
+    "name": "Leo Valeriano",
+    "email": "leonardo@example.com",
+    "password": "Abc@1234"
+}
+
+###
+
+# @name login
+POST {{baseUrl}}/auth/login
+Content-Type: application/json
+
+{
+    "email": "leonardo@example.com",
+    "password": "Abc@1234"
+}
+
+###
+
+# @name verify
+GET {{baseUrl}}/auth/verify
+Authorization: Bearer {{accessToken}}
