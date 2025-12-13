@@ -1,5 +1,5 @@
 @baseUrl= http://localhost:3000/api
-@orderId = 0dc6cb0c-0441-4888-a43b-e6dac7eaaf65
+@orderId = 717d7e24-8a7a-4429-8349-b4e5d3a406bf
 @status = PENDING
 @newStatus = DELIVERED
 
