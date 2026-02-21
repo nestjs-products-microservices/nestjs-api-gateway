@@ -1,0 +1,35 @@
+@baseUrl= http://localhost:3003
+@stripeSignature=
+
+###
+# @name healthCheck
+GET {{baseUrl}}
+
+###
+# @name paymentsSuccess
+GET {{baseUrl}}/payments/success
+
+###
+# @name paymentsCancel
+GET {{baseUrl}}/payments/cancel
+
+###
+# @name stripeWebhook
+POST {{baseUrl}}/payments/webhook
+Content-Type: application/json
+stripe-signature: {{stripeSignature}}
+
+{
+  "id": "evt_test_webhook",
+  "object": "event",
+  "type": "charge.succeeded",
+  "data": {
+    "object": {
+      "id": "ch_test_123",
+      "metadata": {
+        "orderId": "order_test_123"
+      },
+      "receipt_url": "https://example.com/receipt"
+    }
+  }
+}
