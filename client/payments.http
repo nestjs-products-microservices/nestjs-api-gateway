@@ -1,4 +1,4 @@
-@baseUrl= http://localhost:3003
+@baseUrl= http://34.117.255.122
 @stripeSignature=
 
 ###
