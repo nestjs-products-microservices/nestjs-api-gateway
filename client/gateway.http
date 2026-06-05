@@ -1,4 +1,2 @@
-@baseUrl=http://35.190.25.137
-
 # @name healthCheck
-GET {{baseUrl}}
+GET {{host}}
